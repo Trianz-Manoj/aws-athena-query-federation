@@ -116,8 +116,8 @@ public class KinesisMinimumFunctionalityStandAlone
     }
     public void start()
     {
-        embeddedKinesisStream = new EmbeddedKinesisStream(("AKIAWIRSZAC4JFB22YG5"),
-                ("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));
+        embeddedKinesisStream = new EmbeddedKinesisStream((""),
+                (""));
         //embeddedKinesisStream = new EmbeddedKinesisStream(secretKey,secretKey);
 
     }
@@ -155,8 +155,8 @@ public class KinesisMinimumFunctionalityStandAlone
         }
 
        // TestUtils.installKinesisPlugin(queryRunner, tempDir.toAbsolutePath().toString(),
-                //TestUtils.noneToBlank("AKIAWIRSZAC4JFB22YG5"),
-               // TestUtils.noneToBlank("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));
+                //TestUtils.noneToBlank(""),
+               // TestUtils.noneToBlank(""));
 
         System.out.println( "QueryRunner created Successfully" + queryRunner.toString());
 

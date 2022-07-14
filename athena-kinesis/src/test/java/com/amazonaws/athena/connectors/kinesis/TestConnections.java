@@ -60,8 +60,8 @@ public class TestConnections {
 
     /*public void start()
     {
-        embeddedKinesisStream = new EmbeddedKinesisStream(TestUtils.noneToBlank("AKIAWIRSZAC4JFB22YG5"),
-                TestUtils.noneToBlank("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));
+        embeddedKinesisStream = new EmbeddedKinesisStream(TestUtils.noneToBlank(""),
+                TestUtils.noneToBlank(""));
 
     }*/
 

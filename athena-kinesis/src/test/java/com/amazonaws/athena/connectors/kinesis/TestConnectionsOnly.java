@@ -20,8 +20,8 @@ public class TestConnectionsOnly {
 
     public void start(String accessKey, String secretKey)
     {
-        /*embeddedKinesisStream = new EmbeddedKinesisStream(("AKIAWIRSZAC4JFB22YG5"),
-                ("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));*/
+        /*embeddedKinesisStream = new EmbeddedKinesisStream((""),
+                "));*/
         embeddedKinesisStream = new EmbeddedKinesisStream(accessKey,secretKey);
 
     }
