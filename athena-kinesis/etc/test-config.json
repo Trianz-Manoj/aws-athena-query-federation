@@ -1,0 +1,29 @@
+{
+  "connector_name" :  "googlesheet",
+  "athena_work_group" : "AmazonAthenaPreviewFunctionality",
+  "secrets_manager_secret" : "",
+  "access_key": "AKIAWIRSZAC4N3OH75YO",
+  "secret_key": "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",
+  "region": "us-east-1",
+  "schema_name": "default",
+  "table_name": "directory",
+  "table_name2": "product",
+  "partition_table": "covid19_bulk_datepartition",
+  "table_name3": "numtest",
+  "environment_vars" : {
+    "aws_account": "430676967608",
+    "spill_bucket" : "trianz-teradata-athena-jdbc",
+    "spill_prefix" : "athena-spill",
+    "disable_spill_encryption" : "false",
+    "region" : "us-east-1",
+    "secret_manager_gsheeet_creds_name": "AthenaGoogleSheetsCredentials",
+    "licenceKey": "6+JZcKp9l4cVnCw9wZNd46pxDhTI82oU4RTXtYUAeWCTpPTGUdhmqpYsWhIbV/rlDB9xYBVyhEE9BQMJzB7gH+EBqcsi1HostmQybJJZTc/XfCP8xOE4BQ==;S5ZFJO6QCuF+Zf4aqGN+O8HBoqwthRpU6pICiZrrqIWiD8l2wKUINYjh28mYlNudImxn6YqclwIm3dtpJapIm8FLU7bzTsEsFSsF83i4KVzdujIRuoWFJvemwusT6mzWzArH5Kw8hipVKuhNg6JJDFUA2T+fUdkZldQhqV+9t/vC55xibohDN2zecGO/JCaaMhrgowDwmbAHPJ9fti3GjQQx+MxDYDlrm5lB7AtkwaNzUWhqMDCJ+R4oBeg+zZq7tUbiUpOG6pD0jrE+pbBZv773F+0KZyou2EqLqdoMTToETrdQ60zc9h5XR5VoPH6QSvvGozuoM8raZ44WIW/Zrw=="
+  },
+  "vpc_configuration" : {
+    "region" : "us-east-1",
+    "vpc_id": "vpc-872736e1",
+    "security_group_id": "sg-09a67e9054735c252",
+    "subnet_ids": ["subnet-002e26a4afff211a0"],
+    "availability_zones": ["us-east-1a"]
+  }
+}

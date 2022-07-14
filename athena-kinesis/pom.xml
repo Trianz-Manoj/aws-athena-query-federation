@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>aws-athena-query-federation</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <version>2022.24.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>athena-kinesis</artifactId>
+
+    <version>${aws-athena-federation-sdk.version}</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <slf4jVersion>1.7.30</slf4jVersion>
+        <trino.version>368</trino.version>
+        <log4j2Version>2.16.0</log4j2Version>
+        <aws.lambda-java-log4j2.version>1.5.0</aws.lambda-java-log4j2.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>athena-federation-integ-test</artifactId>
+            <version>2022.24.1</version>
+            <!--suppress UnresolvedMavenProperty -->
+            <!-- <version>${aws-athena-federation-sdk.version}</version>-->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.trino</groupId>
+            <artifactId>trino-spi</artifactId>
+            <version>388</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>athena-jdbc</artifactId>
+            &lt;!&ndash;<version>${aws-athena-federation-sdk.version}</version>&ndash;&gt;
+
+        </dependency>-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>athena-jdbc</artifactId>
+            <!--<version>${aws-athena-federation-sdk.version}</version>-->
+            <version>2022.24.1</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Powermock depedency -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-core -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-secretsmanager</artifactId>
+            <version>${aws-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.meanbean</groupId>
+            <artifactId>meanbean</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>3.5.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- <dependency>
+             <groupId>com.amazonaws</groupId>
+             <artifactId>aws-athena-federation-sdk</artifactId>
+             &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
+             <version>${aws-athena-federation-sdk.version}</version>
+             <exclusions>
+                 &lt;!&ndash; replaced with jcl-over-slf4j &ndash;&gt;
+                 <exclusion>
+                     <groupId>commons-logging</groupId>
+                     <artifactId>commons-logging</artifactId>
+                 </exclusion>
+             </exclusions>
+         </dependency>-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>stringtemplate</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-jdbc</artifactId>
+            <version>0.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2Version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mockrunner</groupId>
+            <artifactId>mockrunner-jdbc</artifactId>
+            <version>1.0.4</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-log4j2</artifactId>
+            <version>${aws.lambda-java-log4j2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2Version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2Version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-rds</artifactId>
+            <version>${aws-sdk.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>rds</artifactId>
+            <version>${aws-cdk.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- trino-deps -->
+        <dependency>
+            <groupId>io.trino</groupId>
+            <artifactId>trino-main</artifactId>
+            <version>${trino.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-testing-services</artifactId>
+                </exclusion>
+                <!--<exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-plugin-toolkit</artifactId>
+                </exclusion>-->
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-parser</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.trino.tpch</groupId>
+                    <artifactId>tpch</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-tpch</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                </exclusion>
+                <!--                <exclusion>-->
+                <!--                    <groupId>io.trino</groupId>-->
+                <!--                    <artifactId>trino-memory-context</artifactId>-->
+                <!--                </exclusion>-->
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-matching</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-geospatial-toolkit</artifactId>
+                </exclusion>
+                <!--                <exclusion>-->
+                <!--                    <groupId>io.trino</groupId>-->
+                <!--                    <artifactId>trino-client</artifactId>-->
+                <!--                </exclusion>-->
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- <dependency>
+             <groupId>io.trino</groupId>
+             <artifactId>trino-google-sheets</artifactId>
+             <version>${trino.version}</version>
+             <exclusions>
+                 <exclusion>
+                     <groupId>org.apache.logging.log4j</groupId>
+                     <artifactId>log4j-to-slf4j</artifactId>
+                 </exclusion>
+             </exclusions>
+         </dependency>-->
+
+        <dependency>
+            <groupId>io.trino</groupId>
+            <artifactId>trino-plugin-toolkit</artifactId>
+            <version>${trino.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-testing-services</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-kinesis-client</artifactId>
+            <version>3.0.0</version>
+        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.amazonaws</groupId>-->
+        <!--            <artifactId>aws-java-sdk-kinesis</artifactId>-->
+        <!--            <version>1.12.257</version>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-kinesis</artifactId>
+            <version>1.12.257</version>
+        </dependency>
+        <dependency>
+            <groupId>io.trino</groupId>
+            <artifactId>trino-parser</artifactId>
+            <version>${trino.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.trino</groupId>
+                    <artifactId>trino-testing-services</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- trino-deps -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!-- LICENCE KEY -->
+        <dependency>
+            <groupId>com.trianz</groupId>
+            <artifactId>license-validator</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-athena-federation-sdk</artifactId>
+            <version>2022.24.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>athena-jdbc</artifactId>
+            <version>2022.24.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.trino</groupId>
+            <artifactId>trino-plugin-toolkit</artifactId>
+            <version>388</version>
+        </dependency>
+        <dependency>
+            <groupId>athena</groupId>
+            <artifactId>athena</artifactId>
+            <version>1.0.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.12.239</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                    <transformers>
+                        <transformer
+                                implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
+                        </transformer>
+                    </transformers>
+
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.edwgiz</groupId>
+                        <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
+                        <version>2.8.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars</name>
+            <url>https://repo.clojars.org/</url>
+        </repository>
+    </repositories>
+    <!--<repositories>
+        <repository>
+            <id>TrianzAFQConnectors</id>
+            <url>
+                https://concierto.pkgs.visualstudio.com/TrianzAFQConnectors-code-release/_packaging/TrianzAFQConnectors/maven/v1
+            </url>
+        </repository>
+    </repositories>-->
+    <!--<distributionManagement>
+        <repository>
+            <id>TrianzAFQConnectors</id>
+            <url>
+                https://concierto.pkgs.visualstudio.com/TrianzAFQConnectors-code-release/_packaging/TrianzAFQConnectors/maven/v1
+            </url>
+            &lt;!&ndash;            <releases>&ndash;&gt;
+            &lt;!&ndash;                <enabled>true</enabled>&ndash;&gt;
+            &lt;!&ndash;            </releases>&ndash;&gt;
+            &lt;!&ndash;            <snapshots>&ndash;&gt;
+            &lt;!&ndash;                <enabled>true</enabled>&ndash;&gt;
+            &lt;!&ndash;            </snapshots>&ndash;&gt;
+        </repository>
+    </distributionManagement>-->
+
+</project>
