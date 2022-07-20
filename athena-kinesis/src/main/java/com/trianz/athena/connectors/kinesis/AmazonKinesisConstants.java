@@ -39,7 +39,7 @@ public class AmazonKinesisConstants {
      * The name of the secret within Secrets Manager that contains credentials JSON that provides this Lambda access
      * to call Google BigQuery.
      */
-    public static final String ENV_GOOGLE_SHEET_QUERY_CREDS_SM_ID = "secret_manager_gsheeet_creds_name";
+    public static final String ENV_GOOGLE_SHEET_QUERY_CREDS_SM_ID = "kinesis-secret";
 
 //    public static final String ENV_BIG_QUERY_CREDS_SM_ID = "secret_manager_gcp_creds_name";
 

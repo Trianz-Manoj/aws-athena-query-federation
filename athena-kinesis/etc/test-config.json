@@ -16,7 +16,7 @@
     "spill_prefix" : "athena-spill",
     "disable_spill_encryption" : "false",
     "region" : "us-east-1",
-    "secret_manager_gsheeet_creds_name": "AthenaGoogleSheetsCredentials",
+    "secret_manager_gsheeet_creds_name": "secretKey-Kinesis",
     "licenceKey": "6+JZcKp9l4cVnCw9wZNd46pxDhTI82oU4RTXtYUAeWCTpPTGUdhmqpYsWhIbV/rlDB9xYBVyhEE9BQMJzB7gH+EBqcsi1HostmQybJJZTc/XfCP8xOE4BQ==;S5ZFJO6QCuF+Zf4aqGN+O8HBoqwthRpU6pICiZrrqIWiD8l2wKUINYjh28mYlNudImxn6YqclwIm3dtpJapIm8FLU7bzTsEsFSsF83i4KVzdujIRuoWFJvemwusT6mzWzArH5Kw8hipVKuhNg6JJDFUA2T+fUdkZldQhqV+9t/vC55xibohDN2zecGO/JCaaMhrgowDwmbAHPJ9fti3GjQQx+MxDYDlrm5lB7AtkwaNzUWhqMDCJ+R4oBeg+zZq7tUbiUpOG6pD0jrE+pbBZv773F+0KZyou2EqLqdoMTToETrdQ60zc9h5XR5VoPH6QSvvGozuoM8raZ44WIW/Zrw=="
   },
   "vpc_configuration" : {
