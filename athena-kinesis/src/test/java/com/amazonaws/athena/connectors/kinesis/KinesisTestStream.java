@@ -140,8 +140,8 @@ public class KinesisTestStream {
     }
     public void start()
     {
-        embeddedKinesisStream = new EmbeddedKinesisStream(TestUtils.noneToBlank("AKIAWIRSZAC4JFB22YG5"),
-                TestUtils.noneToBlank("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));
+        embeddedKinesisStream = new EmbeddedKinesisStream(TestUtils.noneToBlank(""),
+                TestUtils.noneToBlank(""));
         System.out.println("Connection success...");
 
     }
@@ -211,8 +211,8 @@ public class KinesisTestStream {
         }
         System.out.println("starting installKinesisPlugin task....");
         TestUtils.installKinesisPlugin(queryRunner, tempDir.toAbsolutePath().toString(),
-                TestUtils.noneToBlank("AKIAWIRSZAC4JFB22YG5"),
-                TestUtils.noneToBlank("c9BjDlTacT53hDEtphTOS+lMaLSUXrcu/bUwGBGO"));
+                TestUtils.noneToBlank(""),
+                TestUtils.noneToBlank(""));
 
         System.out.println( "QueryRunner created Successfully" + queryRunner.toString());
 
